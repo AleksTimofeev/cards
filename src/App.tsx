@@ -1,24 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {HashRouter, NavLink, Route, Routes} from "react-router-dom";
+import Header from "./Components/Header/Header";
+import Login from "./Components/Auth/Login";
+import Registration from "./Components/Auth/Registration";
+import Profile from "./Components/Profile/Profile";
+import PasswordRecovery from "./Components/Auth/PasswordRecovery";
+import ChangePassword from "./Components/Auth/ChangePassword";
+import TestPage from "./Components/TestPage/TestPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HashRouter>
+        <Header />
+        <Routes>
+          <Route path={'/'} element={<div><h2>Home</h2></div>} />
+          <Route path={'/login'} element={<Login />} />
+          <Route path={'/registration'} element={<Registration />} />
+          <Route path={'/profile'} element={<Profile />} />
+          <Route path={'/password-recovery'} element={<PasswordRecovery />} />
+          <Route path={'/change-password'} element={<ChangePassword />} />
+          <Route path={'/test-page'} element={<TestPage />} />
+        </Routes>
+      </HashRouter>
     </div>
   );
 }
